@@ -5,12 +5,12 @@
  * @returns {object} - returns the new object
  */
 export const omit = (obj, ...fields) => {
-  let array = [...fields];
+  const array = [...fields];
 
   let clone = {};
 
   Object.entries(obj).forEach(([key, value]) => {
-    if (array.indexOf(key) === -1) {
+    if (!array.includes(key)) {
       clone[key] = obj[key];
     }
   });

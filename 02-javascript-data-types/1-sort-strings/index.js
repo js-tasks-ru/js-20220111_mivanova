@@ -8,15 +8,13 @@
 export function sortStrings(arr, param = 'asc') {
   const locales = ['ru', 'en'];
   const options = { caseFirst: 'upper' };
-  const Collator = new Intl.Collator(locales, options);
 
-  let sortedArr;
+  let sortedArr = arr.slice();
 
-  if (param === 'asc') {
-    sortedArr = arr.slice().sort((a, b) => a.localeCompare(b, ['ru', 'en'], {caseFirst: 'upper' }));
-  } else {
-    sortedArr = arr.slice().sort((a, b) => a.localeCompare(b, ['ru', 'en'], {caseFirst: 'upper' })).reverse();
-  }
+  sortedArr = sortedArr.sort((a, b) =>
+    param === 'asc' ?
+      a.localeCompare(b, locales, options) :
+      b.localeCompare(a, locales, options));
 
   return sortedArr;
 }
