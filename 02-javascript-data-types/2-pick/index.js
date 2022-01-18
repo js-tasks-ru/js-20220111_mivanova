@@ -5,5 +5,15 @@
  * @returns {object} - returns the new object
  */
 export const pick = (obj, ...fields) => {
+  const array = [...fields];
 
+  let clone = {};
+
+  Object.entries(obj).forEach(([key, value]) => {
+    if (array.includes(key)) {
+      clone[key] = obj[key];
+    }
+  });
+
+  return clone;
 };
