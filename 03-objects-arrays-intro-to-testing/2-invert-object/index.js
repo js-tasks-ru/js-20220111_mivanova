@@ -6,7 +6,7 @@
 export function invertObj(obj) {
   if (obj) {
     const clone = {};
-    for (let key in obj) {
+    for (const key in obj) {
       clone[obj[key]] = key;
     }
     return clone;
