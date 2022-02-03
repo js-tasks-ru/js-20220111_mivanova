@@ -34,14 +34,14 @@ export default class SortableTable {
 
   getRows(item) {
     SortableTable.row = '';
-    if (Object.keys(item).length > 0) {
-      for (let key of SortableTable.headers) {
+    if (Object.keys(item).length) {
+      for (const key of SortableTable.headers) {
         if (key === 'images') {
           SortableTable.row += `<div class="sortable-table__cell">
                      <img class="sortable-table-image" alt="Image" src="${item[key][0].url}">
                   </div>`
         } else {
-          SortableTable.row +=`<div class="sortable-table__cell">${item[key]}</div>`
+          SortableTable.row += `<div class="sortable-table__cell">${item[key]}</div>`
         }
       }
       return SortableTable.row;
@@ -49,7 +49,7 @@ export default class SortableTable {
   }
 
   getColumnBody() {
-    if (this.data.length > 0) {
+    if (this.data.length) {
       return this.data
         .map(item => {
           return `<a href="" class="sortable-table__row">
@@ -139,7 +139,6 @@ export default class SortableTable {
 
     this.subElements.body.innerHTML = this.getColumnBody(data);
     this.subElements.header.innerHTML = this.getColumnHead();
-    console.log(this.subElements.body.textContent);
   }
 
   remove() {

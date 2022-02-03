@@ -37,12 +37,12 @@ export default class NotificationMessage {
 
   }
 
-  show(targetElement) {
+  show(targetElement = document.body) {
     if (NotificationMessage.subElements) {
       NotificationMessage.subElements.remove();
     }
     NotificationMessage.subElements = this.element;
-    targetElement ? targetElement.append(this.element) : document.body.append(this.element);
+    targetElement.append(this.element);
     setTimeout(() => this.destroy(), this.duration);
   }
 
